@@ -8,9 +8,6 @@ func main() {
 	var age3 = 10
 	var age4 = 10
 
-
-
-
 	println(age)
 	println(age2)
 	println(age3)

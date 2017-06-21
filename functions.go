@@ -1,8 +1,8 @@
 package main
 
-func add(x int,y int) int  {
-	return x+y
+func add(x int, y int) int {
+	return x + y
 }
 func main() {
-	println(add(2,3))
+	println(add(2, 3))
 }

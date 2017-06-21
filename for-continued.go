@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	sum := 1
 
-	for ; sum < 511; {
+	for sum < 511 {
 		sum += sum
 	}
 
