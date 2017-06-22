@@ -9,16 +9,27 @@ import (
 type Hello struct {
 }
 
-func (h Hello) ServerHTTP(w http.ResponseWriter,
+func (h Hello) ServeHTTP(w http.ResponseWriter,
 	r *http.Request) {
 
 	fmt.Fprint(w, "Hello!")
+	fmt.Fprint(w, "Hello!")
+	fmt.Fprint(w, "Hello!")
+	fmt.Fprint(w, "Hello!")
+	fmt.Fprint(w, "Hello!")
+	fmt.Fprint(w, "Hello!")
+	fmt.Fprint(w, "Hello!")
+
+	fmt.Println(r.UserAgent())
+	fmt.Println(r.Host)
+	fmt.Println(r.Header)
+	fmt.Println(r.Cookies())
 
 }
 func main() {
-	//var h Hello
+	var h Hello
 
-	err := http.ListenAndServe("localhost:4000", nil)
+	err := http.ListenAndServe("localhost:4000", h)
 	if err != nil {
 		log.Fatal(err)
 	}
