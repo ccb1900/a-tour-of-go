@@ -3,8 +3,32 @@ package main
 import (
 	"log"
 	"net/http"
+	"fmt"
 )
 
+type String string
+type Struct struct {
+	Greeting string
+	Punct    string
+	Who      string
+}
+
+func (s String) ServeHTTP(
+	w http.ResponseWriter,
+	r *http.Request,
+) {
+	fmt.Fprint(w, s)
+}
+
+func (s Struct) ServeHTTP(
+	w http.ResponseWriter,
+	r *http.Request,
+) {
+	fmt.Fprint(w, s.Who, s.Punct, s.Greeting)
+}
 func main() {
-	log.Fatal(http.ListenAndServe())
+	http.Handle("/string", String("I am a frayed knot"))
+	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
+	log.Fatal(http.ListenAndServe("localhost:4000", nil))
+
 }
